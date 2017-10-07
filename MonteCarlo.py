@@ -81,7 +81,10 @@ inside_points_y_list = []
 
 #Set number of iterations for Monte Carlo simulation 
 iteration_idx = 0
-total_iteration_number = 2000
+
+#The higher this number is, the greater the resolution of the image, but the longer the compute time will take
+#Using an i7-6700HQ @ 3.5Ghz, I get around 600 iterations per second. 
+total_iteration_number = 200000 
 
 #Start time
 start_time = time.clock()
@@ -151,7 +154,12 @@ running_time = time.clock() - start_time
 print "Total Run Time = %.2f seconds."%running_time
 #Print iterations per second
 print "Program Frequency = %.2f iterations per second."%float(total_iteration_number / running_time)
-			
+
+print "Centroid X: %.2f"%x_centroid
+print "Centroid Y: %.2f"%y_centroid
+
+
+
 ################################
 #          Plot Points         #
 ################################
