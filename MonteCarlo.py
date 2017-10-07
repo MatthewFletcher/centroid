@@ -34,8 +34,6 @@
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
-import pylab
-import math
 import random
 import time
 
@@ -83,14 +81,14 @@ inside_points_y_list = []
 
 #Set number of iterations for Monte Carlo simulation 
 iteration_idx = 0
-total_iteration_number = 8000
+total_iteration_number = 2000
 
 #Start time
 start_time = time.clock()
 
 #Monte Carlo simulation 
 while iteration_idx < total_iteration_number:
-	#print "Inside while loop"
+
 	#Reset cross count equal to zero for each iteration 
 	cross_count = 0
 
@@ -98,16 +96,12 @@ while iteration_idx < total_iteration_number:
 	x_t = random.uniform(min(x), max(x))
 	y_t = random.uniform(min(y), max(y))
 	
-	#print "points selected"
-	#print "x_t", x_t
-	#print "y_t", y_t
 
 
 
 	#Check if test point is in between each successive set of points 
 	for idx in range(0,len(x)-1):
-		#print "y_t is ",y_t
-		#print "y[iteration_idx]", y[idx]
+		
 		#Check if x coordinate of point is betweeen the 2 successive points. 
 		
 		#if this is true, add 1 to the cross count, and try another point 
@@ -115,7 +109,7 @@ while iteration_idx < total_iteration_number:
 			#If x is between the two points from left to right
 			if x_t>x[idx] and x_t<x[idx+1]:
 				cross_count = cross_count + 1
-				#print "success"
+			
 
 			#If x is between the two points from right to left 
 			if x_t<x[idx] and x_t>x[idx+1]:
@@ -138,12 +132,10 @@ while iteration_idx < total_iteration_number:
 #Calculate centroid by averaging all points inside. 
 #Calculate number of data points
 x_len=len(inside_points_x_list)
-#print "x_len", x_len
 y_len=len(inside_points_y_list)
 
 #Set sum of points equal to x_sum and y_sum
 x_sum=np.sum(inside_points_x_list)
-#print "x_sum", x_sum
 y_sum=np.sum(inside_points_y_list)
 
 #Calculate centroid of points
@@ -155,7 +147,7 @@ y_centroid = y_sum/y_len
 #Stop Time and print running time
 running_time = time.clock() - start_time
 
-
+#Print running time
 print "Total Run Time = %.2f seconds."%running_time
 #Print iterations per second
 print "Program Frequency = %.2f iterations per second."%float(total_iteration_number / running_time)
